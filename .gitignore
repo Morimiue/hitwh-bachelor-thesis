@@ -1,0 +1,14 @@
+# MacOS
+.DS_Store
+
+# output
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.pdf
+*.synctex
+*.synctex.gz
+*.thm
+*/*.aux
