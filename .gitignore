@@ -12,3 +12,7 @@
 *.synctex.gz
 *.thm
 */*.aux
+*.glo
+*.idx
+*.ist
+*.toc
