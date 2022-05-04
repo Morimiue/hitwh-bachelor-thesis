@@ -8,7 +8,7 @@
 %% 
 %% This is a generated file.
 %% 
-%% Copyright (C) 2017-2022 by Chu Yanshuo <yanshuoc@gmail.com>
+%% Copyright (C) 2017-2021 by Chu Yanshuo <yanshuoc@gmail.com>
 %% 
 %% This file may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either version 1.3a
@@ -25,7 +25,7 @@
 %% 
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesClass{hithesisbook}
-[2021/11/29 3.0.16 Harbin Institute of Technology Thesis Template]
+[2021/05/06 3.0.15 Harbin Institute of Technology Thesis Template]
 \RequirePackage{ifthen}
 \RequirePackage{kvoptions}
 \SetupKeyvalOptions{
@@ -95,7 +95,7 @@
 \DeclareBoolOption[false]{capcenterlast}
 \DeclareBoolOption[false]{subcapcenterlast}
 \DeclareBoolOption[false]{absupper}
-\DeclareBoolOption[true]{bsmainpagenumberline}
+\DeclareBoolOption[false]{bsmainpagenumberline}
 \DeclareBoolOption[false]{bsfrontpagenumberline}
 \DeclareBoolOption[true]{bsheadrule}
 \DeclareBoolOption[true]{newtxmath}
@@ -105,7 +105,6 @@
 \DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 \ProcessKeyvalOptions*
 \PassOptionsToPackage{no-math}{fontspec}
-\IfFileExists{newtx.sty}{\PassOptionsToPackage{nofontspec}{newtxtext}}{}
 \ifhit@bachelor
 \PassOptionsToClass{oneside}{book}
 \fi
@@ -1527,23 +1526,13 @@ foot=8.5true mm
 \vspace{2\baselineskip}
 \par\hspace{6em}\hit@authorsig\hfill\hit@frontdate\hit@datefill
 \ifhit@english\vspace{\baselineskip}\else\vspace{2\baselineskip}\fi
-\par\hspace{6em}\hit@teachersig\hfill\hit@frontdate\hit@datefill
-}
+\par\hspace{6em}\hit@teachersig\hfill\hit@frontdate\hit@datefill}
 \def\hit@authorization@bachelor{%
   \ifhit@openright\cleardoublepage\else\clearpage\fi
   \hit@appendix@chapter*{\hit@declarename@bachelor}
   \hit@authorizationtext@bachelor
-  \vspace{2\baselineskip}
-  \ifhit@weihai
-    \par\hfill\hit@authorsig\hspace{6em}
-    \vspace{1\baselineskip}
-    \par\hfill\hit@teachersig\hspace{6em}
-    \vspace{2\baselineskip}
-    \par\hfill\hit@datefill
-    \songti
-  \else
-    \par\hspace{6em}\hit@authorsig\hfill\hit@frontdate\hit@datefill
-  \fi
+\vspace{2\baselineskip}
+\par\hspace{6em}\hit@authorsig\hfill\hit@frontdate\hit@datefill
 }
 
 \NewDocumentCommand{\authorization}{o}{%
