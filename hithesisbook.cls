@@ -5,33 +5,34 @@
 %% The original source files were:
 %%
 %% hithesis.dtx  (with options: `bookcls')
-%%
+%% 
 %% This is a generated file.
-%%
+%% 
 %% Copyright (C) 2017-2022 by Chu Yanshuo <yanshuoc@gmail.com>
-%%
+%% 
 %% This file may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either version 1.3a
 %% of this license or (at your option) any later version.
 %% The latest version of this license is in:
-%%
+%% 
 %% http://www.latex-project.org/lppl.txt
-%%
+%% 
 %% and version 1.3a or later is part of all distributions of LaTeX
 %% version 2004/10/01 or later.
-%%
+%% 
 %% To produce the documentation run the original source files ending with `.dtx'
 %% through LaTeX.
-%%
+%% 
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesClass{hithesisbook}
-[2021/11/29 3.0.16 Harbin Institute of Technology Thesis Template]
-\RequirePackage{ifthen}
+[2021/05/11 v3.0.21 Harbin Institute of Technology Thesis Template]
 \RequirePackage{kvoptions}
 \SetupKeyvalOptions{
   family=hit,
   prefix=hit@,
-  setkeys=\kvsetkeys}
+  setkeys=\kvsetkeys
+}
+
 \newif\ifhit@bachelor
 \newif\ifhit@master
 \newif\ifhit@doctor
@@ -41,7 +42,8 @@
   \hit@masterfalse
   \hit@doctorfalse
   \hit@postdocfalse
-  \expandafter\csname hit@#1true\endcsname}
+  \expandafter\csname hit@#1true\endcsname
+}
 \newif\ifhit@shenzhen
 \newif\ifhit@weihai
 \newif\ifhit@harbin
@@ -49,20 +51,22 @@
   \hit@shenzhenfalse
   \hit@weihaifalse
   \hit@harbinfalse
-  \expandafter\csname hit@#1true\endcsname}
+  \expandafter\csname hit@#1true\endcsname
+}
 \ifhit@weihai\relax\else
-\ifhit@shenzhen\relax\else
-\hit@harbintrue
-\fi
+  \ifhit@shenzhen\relax\else
+    \hit@harbintrue
+  \fi
 \fi
 \newif\ifhit@english
 \newif\ifhit@chinese
 \define@key{hit}{language}{%
   \hit@englishfalse
   \hit@chinesefalse
-  \expandafter\csname hit@#1true\endcsname}
+  \expandafter\csname hit@#1true\endcsname
+}
 \ifhit@english\relax\else
-\hit@chinesetrue
+  \hit@chinesetrue
 \fi
 \newif\ifhit@geometrynewone
 \newif\ifhit@geometrynewtwo
@@ -71,13 +75,15 @@
   \hit@geometrynewonefalse
   \hit@geometrynewtwofalse
   \hit@geometrynewnofalse
-  \expandafter\csname hit@geometrynew#1true\endcsname}
+  \expandafter\csname hit@geometrynew#1true\endcsname
+}
 \newif\ifhit@zijvregu
 \newif\ifhit@zijvword
 \define@key{hit}{zijv}{%
   \hit@zijvregufalse
   \hit@zijvwordfalse
-  \expandafter\csname hit@zijv#1true\endcsname}
+  \expandafter\csname hit@zijv#1true\endcsname
+}
 \DeclareBoolOption[false]{arialtoc}
 \DeclareBoolOption[false]{arialtitle}
 \DeclareBoolOption[true]{chapterbold}
@@ -105,7 +111,6 @@
 \DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 \ProcessKeyvalOptions*
 \PassOptionsToPackage{no-math}{fontspec}
-% \IfFileExists{newtx.sty}{\PassOptionsToPackage{nofontspec}{newtxtext}}{}
 \ifhit@bachelor
 \PassOptionsToClass{oneside}{book}
 \fi
@@ -115,6 +120,7 @@
 \ifhit@doctor
 \PassOptionsToClass{twoside}{book}
 \fi
+\RequirePackage{ifthen}
 \ifthenelse%
 {\equal{\hit@fontset}{}}%
 {%
@@ -134,42 +140,71 @@
   \ifhit@master\relax\else
     \ifhit@doctor\relax\else
       \ifhit@postdoc\relax\else
-          \ClassError{hithesis}%
-                    {Please specify thesis type in option: \MessageBreak
-                      type=[bachelor | master | doctor | postdoc]}{}
+        \ClassError{hithesis}{%
+        \MessageBreak Please specify thesis type in option:
+          \MessageBreak type=[bachelor | master | doctor | postdoc]}{}
       \fi
     \fi
   \fi
 \fi
 \ifhit@zijvregu\relax\else
-\ifhit@zijvword\relax\else
-\hit@zijvregutrue
-\fi
+  \ifhit@zijvword\relax\else
+    \hit@zijvregutrue
+  \fi
 \fi
 \ifhit@geometrynewone\relax\else
-\ifhit@geometrynewtwo\relax\else
-\ifhit@geometrynewno\relax\else
-\hit@geometrynewtwotrue
-\fi
-\fi
+  \ifhit@geometrynewtwo\relax\else
+    \ifhit@geometrynewno\relax\else
+      \hit@geometrynewtwotrue
+    \fi
+  \fi
 \fi
 \RequirePackage{etoolbox}
 \RequirePackage{ifxetex}
 \ifxetex
 \else
-        \ClassError{hithesis}%
-                   {Please use: \MessageBreak
-                    xelatex}{}
+  \ClassError{hithesis}{Please use: \MessageBreak xelatex}{}
 \fi
 \RequirePackage{xparse}
 \RequirePackage{amsmath}
 \RequirePackage[amsmath,thmmarks,hyperref]{ntheorem}
 \RequirePackage{amssymb}
-\RequirePackage[defaultsups]{newtxtext}
+\setmainfont{TeXGyreTermesX}[
+  UprightFont = *-Regular ,
+  BoldFont = *-Bold ,
+  ItalicFont = *-Italic ,
+  BoldItalicFont = *-BoldItalic ,
+  Extension = .otf ,
+  ]
+\setsansfont{texgyreheros}[
+  UprightFont = *-regular ,
+  BoldFont = *-bold ,
+  ItalicFont = *-italic ,
+  BoldItalicFont = *-bolditalic ,
+  Extension = .otf ,
+  ]
+\setmonofont{texgyrecursor}[
+  UprightFont = *-regular ,
+  BoldFont = *-bold ,
+  ItalicFont = *-italic ,
+  BoldItalicFont = *-bolditalic ,
+  Extension = .otf ,
+]
 \ifhit@newtxmath
-\RequirePackage{newtxmath}
+  \let\oldencodingdefault\encodingdefault
+  \let\oldrmdefault\rmdefault
+  \let\oldsfdefault\sfdefault
+  \let\oldttdefault\ttdefault
+  \usepackage[T1]{fontenc}
+  \renewcommand{\rmdefault}{ntxtlf}
+  \renewcommand{\sfdefault}{qhv}
+  \renewcommand{\ttdefault}{ntxtt}
+  \RequirePackage{newtxmath}
+  \let\encodingdefault\oldencodingdefault
+  \let\rmdefault\oldrmdefault
+  \let\sfdefault\oldsfdefault
+  \let\ttdefault\oldttdefault
 \fi
-\RequirePackage{courier}
 \RequirePackage{graphicx}
 \RequirePackage{pdfpages}
 \includepdfset{fitpaper=true}
@@ -185,9 +220,11 @@
   \RequirePackage{pifont}
 \fi
 \RequirePackage{xeCJKfntef}
-
 \RequirePackage{longtable}
 \RequirePackage{booktabs}
+\heavyrulewidth=1.5pt
+\lightrulewidth=1pt
+\cmidrulewidth=0.5pt
 \RequirePackage{hyperref}
 \hypersetup{%
   CJKbookmarks=true,
@@ -198,7 +235,8 @@
   breaklinks=true,
   colorlinks=false,
   plainpages=false,
-  pdfborder=0 0 0}
+  pdfborder=0 0 0
+}
 \urlstyle{same}
 \RequirePackage[sort&compress]{gbt7714}
 \ifhit@debug\RequirePackage[showframe]{geometry}\else\RequirePackage{geometry}\fi
@@ -208,45 +246,46 @@
   ignoreall,
   nomarginpar,
 }
-\ifhit@geometrynewtwo%
-\geometry{
-  centering,
-  text={150true mm,236true mm},
-  left=30true mm,
-  head=5true mm,
-  headsep=2true mm,
-  footskip=0true mm,
-  foot=5.2true mm
-}
-\else%
-\ifhit@geometrynewone%
-\geometry{
-  centering,
-  text={150true mm,240true mm},
-  left=30true mm,
-  head=5true mm,
-  headsep=0true mm,
-  footskip=0true mm,
-  foot=0true mm
-}
-\else%
-\geometry{%根据PlutoThesis 原版定义而来
-text={150true mm,224true mm},
-top=35.5true mm,
-left=30true mm,
-head=5true mm,
-headsep=2.5true mm,
-foot=8.5true mm
-}
-\fi%
-\fi%
+\ifhit@geometrynewtwo
+  \geometry{
+    centering,
+    text={150true mm,236true mm},
+    left=30true mm,
+    head=5true mm,
+    headsep=2true mm,
+    footskip=0true mm,
+    foot=5.2true mm
+  }
+\else
+  \ifhit@geometrynewone
+    \geometry{
+      centering,
+      text={150true mm,240true mm},
+      left=30true mm,
+      head=5true mm,
+      headsep=0true mm,
+      footskip=0true mm,
+      foot=0true mm
+    }
+  \else
+    \geometry{%根据PlutoThesis 原版定义而来
+      text={150true mm,224true mm},
+      top=35.5true mm,
+      left=30true mm,
+      head=5true mm,
+      headsep=2.5true mm,
+      foot=8.5true mm
+    }
+  \fi
+\fi
 \ifhit@debug%
-\RequirePackage{layout}
-\RequirePackage{layouts}
-\RequirePackage{lineno}
+  \RequirePackage{layout}
+  \RequirePackage{layouts}
+  \RequirePackage{lineno}
 \fi
 \RequirePackage{fancyhdr}
 \RequirePackage{tabularx}
+\RequirePackage{tabulary}
 \RequirePackage{varwidth}
 \RequirePackage{changepage}
 \RequirePackage{multicol}
@@ -254,14 +293,13 @@ foot=8.5true mm
 \RequirePackage{flafter}       % 使得所有浮动体不能被放置在其浮动环境之前，以免浮动体在引述它的文本之前出现.
 \RequirePackage{multirow}       %使用Multirow宏包，使得表格可以合并多个row格
 \ifhit@subcapcenterlast
-\PassOptionsToPackage{centerlast}{subfigure}
+  \PassOptionsToPackage{centerlast}{subfigure}
 \fi
 \RequirePackage{subfigure}%支持子图 %centerlast 设置最后一行是否居中
 \RequirePackage[subfigure]{ccaption} %支持双语标题
 \RequirePackage[makeindex]{splitidx}
 \newindex[]{china}
 \newindex[]{english}
-\RequirePackage{xltxtra}
 \ifhit@english
 \RequirePackage[xindy,order=letter]{glossaries-extra}
 \newglossarystyle{engstyle}{%
@@ -308,7 +346,7 @@ foot=8.5true mm
   \relax
   \else
   \ifhit@tocblank%
-  \addtocontents{toc}{\vspace{\baselineskip}} %规范中并没有这一要求，此处不应该加
+%   \addtocontents{toc}{\vspace{\baselineskip}} %规范中并没有这一要求，此处不应该加
   \addtocontents{toe}{\vspace{\baselineskip}}
   \fi%
   \fi
@@ -980,7 +1018,6 @@ foot=8.5true mm
 
 \def\hit@second@titlepage{%
   \ifhit@postdoc\hit@second@titlepage@postdoc\else\ifhit@bachelor\hit@second@titlepage@bachelor\else\hit@second@titlepage@other\fi\fi}
-
 \newcommand{\hit@first@titlepage@postdoc}{
   {\songti\sihao\renewcommand{\arraystretch}{2}\
     \begin{tabular}{@{}r@{}l@{\hspace{7\ccwd}}r@{}l@{\hspace{3em}}r}
@@ -1034,7 +1071,7 @@ foot=8.5true mm
   \ifthenelse%
   {\equal{\hit@fontset}{siyuan}}%
   {\xiaosi[1]\vspace*{0.65em}}%
-  {\xiaosi[1]\textcolor[rgb]{1,1,1}{\songti{\hit@hi}}}%
+  {\xiaosi[1]\songti\textcolor[rgb]{1,1,1}{{\hit@hi}}}%
   \vspace*{1.2cm}
   \begin{center}
     \parbox[t][8cm][t]{\textwidth}{
@@ -1074,7 +1111,6 @@ foot=8.5true mm
     \begin{center}
       \hit@cdate
     \end{center}}}
-
 
 \newcommand{\hit@first@titlepage@bachelor}{
 \ifthenelse%
