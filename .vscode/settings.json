@@ -1,0 +1,87 @@
+{
+  "files.exclude": {
+    "*.bbl": true,
+    "*.blg": true,
+    "*.bst": true,
+    "*.cfg": true,
+    "*.fdb_latexmk": true,
+    "*.fls": true,
+    "*.glo": true,
+    "*.idx": true,
+    "*.ilg": true,
+    "*.ist": true,
+    "*.out": true,
+    "*.sty": true,
+    "*.synctex.gz": true,
+    "*.thm": true,
+    "*.toc": true,
+    "*.toe": true,
+    "**/*.aux": true,
+    "bthesistitle.eps": true,
+    "hitlogo.eps": true
+  },
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 10000,
+  //   "editor.formatOnSave": true,
+  "editor.wordWrap": "on",
+
+  "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.latex.recipes" : [
+    {
+      "name" : "xelatex -> bibtex -> xelatex*2",
+      "tools" : [
+        "xelatex",
+        "bibtex",
+        "xelatex",
+        "xelatex"
+      ]
+    },
+    {
+      "name" : "xelatex",
+      "tools" : [
+        "xelatex"
+      ]
+    }
+  ],
+  "latex-workshop.latex.tools" : [
+    {
+      "name" : "xelatex",
+      "command" : "xelatex",
+      "args" : [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-pdf",
+        "%DOC%"
+      ]
+    },
+    {
+      "name" : "latexmk",
+      "command" : "latexmk",
+      "args" : [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-pdf",
+        "%DOC%"
+      ]
+    },
+    {
+      "name" : "pdflatex",
+      "command" : "pdflatex",
+      "args" : [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+      ]
+    },
+    {
+      "name" : "bibtex",
+      "command" : "bibtex",
+      "args" : [
+        "%DOCFILE%"
+      ]
+    }
+  ],  
+}
