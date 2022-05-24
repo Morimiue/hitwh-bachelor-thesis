@@ -545,7 +545,7 @@
 \renewcommand{\floatpagefraction}{0.60}
 \long\def\@makecaption#1#2{%
   \vskip\abovecaptionskip
-  \wuhao\sbox\@tempboxa{#1\ifhit@bachelor\hskip\ccwd\else\enskip\fi#2}%
+  \wuhao\sbox\@tempboxa{#1\enskip#2}%
   \ifdim \wd\@tempboxa >\hsize
   \ifhit@capcenterlast%
   \vskip 6.3bp%
