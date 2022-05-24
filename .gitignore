@@ -5,6 +5,7 @@
 *.docx
 *.doc
 *.pdf
+!pandoc/ref.docx
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
