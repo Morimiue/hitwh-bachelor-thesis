@@ -450,6 +450,7 @@
       \fi
       \ifhit@weihai
         \ifhit@bachelor
+          % 注释这里去掉页眉
           \fancyhead[C]{\songti\xiaowu[0]\hit@cschoolname\hit@bachelor@cxuewei\hit@bachelor@cthesisname}%
         \else
           \fancyhead[C]{\songti\xiaowu[0]\hit@cschoolname\hit@weihaicampus\hit@bachelor@cxuewei\hit@bachelor@cthesisname}%
