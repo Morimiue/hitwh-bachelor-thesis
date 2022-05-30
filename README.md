@@ -14,6 +14,14 @@ clone 或下载项目代码，并根据模版修改项目内 tex 文件即可使
 - 添加了 vscode + latex workshop 的相关配置，能够在编译完成后自动刷新 PDF，开箱即用
 - 添加了 pandoc 导出 word 的格式模版，别问我为什么要加这个（（（
 
-## pandoc 使用说明（希望你别用到这个）
+## pandoc 使用说明（希望别用到）
 
-TODO
+requirements：`pandoc` 和 `pandoc-crossref`
+
+需要安装对应 pandoc 版本的 pandoc-crossref，一般都下载最新版就没问题。随后将二者放入 PATH。
+
+在 tex 项目文件夹运行 `export_word.sh`，即可在目录下找到 `output.docx` 导出文件。windows 用户可以运行以下命令：
+
+```cmd
+pandoc thesis.tex -F pandoc-crossref --citeproc -o output.docx -w docx --pdf-engine xelatex -M "crossrefYaml=pandoc/pandoc-crossref-es.yaml" -M "reference-section-title=参考文献" --bibliography=reference.bib --csl pandoc/pandoc_gb7714-2005.csl --reference-doc pandoc/ref.docx --top-level-division=chapter --number-sections
+```
